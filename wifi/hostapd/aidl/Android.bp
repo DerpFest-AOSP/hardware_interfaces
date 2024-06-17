@@ -13,6 +13,7 @@
 // limitations under the License.
 
 package {
+    default_team: "trendy_team_fwk_wifi_hal",
     // See: http://go/android-license-faq
     // A large-scale-change added 'default_applicable_licenses' to import
     // all of the 'license_kinds' from "hardware_interfaces_license"
@@ -39,6 +40,9 @@ aidl_interface {
                 "com.android.wifi",
             ],
             min_sdk_version: "30",
+            lint: {
+                baseline_filename: "lint-baseline.xml",
+            },
         },
         ndk: {
             gen_trace: true,
@@ -47,11 +51,20 @@ aidl_interface {
         cpp: {
             enabled: false,
         },
+        rust: {
+            enabled: false,
+        },
     },
     versions_with_info: [
         {
             version: "1",
             imports: [],
         },
+        {
+            version: "2",
+            imports: ["android.hardware.wifi.common-V1"],
+        },
+
     ],
+    frozen: true,
 }
